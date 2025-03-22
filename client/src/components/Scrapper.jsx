@@ -1,5 +1,3 @@
-
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Carousel } from "react-responsive-carousel";
@@ -34,14 +32,16 @@ export default function HomePage() {
   const scrapeData = async () => {
     if (!url.trim()) return alert("Please enter a valid Amazon Smart TV URL.");
     try {
-      setLoading(true);
-      const res = await axios.post("http://localhost:5000/scrape", { url });
-      setProduct(res.data);
+      //   setLoading(true);
+      const res = await axios.post("http://localhost:5000/api/scrape", { url });
+      console.log(res.data);
+
+      //   setProduct(res.data);
     } catch (error) {
       console.error("Error fetching data:", error);
       alert("Failed to fetch product details. Please try again.");
     } finally {
-      setLoading(false);
+      //   setLoading(false);
     }
   };
 
