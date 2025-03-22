@@ -1,4 +1,4 @@
-const puppeteer = require("puppeteer");
+import puppeteer from "puppeteer";
 
 async function scrapeProduct(url) {
   const browser = await puppeteer.launch({ headless: true });
@@ -30,4 +30,4 @@ async function scrapeProduct(url) {
   return data;
 }
 
-module.exports = scrapeProduct;
+export default scrapeProduct;

@@ -1,5 +1,5 @@
 import connectDB from "./src/config/db.js";
-import { app, server } from "./src/app.js";
+import { app } from "./src/app.js";
 
 import conf from "./conf.js";
 
