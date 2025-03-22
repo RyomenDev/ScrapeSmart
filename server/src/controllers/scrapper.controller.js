@@ -38,7 +38,7 @@ export const scrapeProduct = async (req, res) => {
     });
     // console.log({ newProduct });
 
-    await product.save();
+    // await product.save();
     res.json(product);
   } catch (error) {
     console.error("❌ Scraping Error:", error);
@@ -56,9 +56,5 @@ export const scrapeProduct = async (req, res) => {
 //    "I have been using this product from last one year. still this one is working fine and there is no problem\n" +
 //      "If anyone is looking for universal adapter, I would recommend to go for it.",
 //    "Good quality but can't carry load when pinned.. pins design required stable right angle when open.. currently not effective..good for travelling",
-//    "It works fine.. but the main pin is little bit lose u need to place it either upside down or place on flat surface.\n" +
-//      "The usb ports r not fast charging but they will charge your electronic devices like action cam etc at normal speed. Takes quite longer time but safe for action cams i guess.\n" +
-//      "Material is okay.",
-//    "Lo llevé a mi Eurotrip y funcionó sin problemas, de verdad lo recomiendo mucho",
-//    "Funcional y barato, diseño muy bien pensado.",
+//    "It works fine.. but the main pin is little bit lose u need to place it either upside down or place on flat surface.\n",
 //  ];

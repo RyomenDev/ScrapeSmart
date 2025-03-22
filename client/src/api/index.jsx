@@ -1,3 +1,7 @@
-import { claimSingleCoupon, getCoupons } from "./scrapperApi.jsx";
+import {
+  fetchProduct,
+  saveProduct,
+  fetchAllSavedProducts,
+} from "./scrapperApi.jsx";
 
-export { claimSingleCoupon, getCoupons };
+export { fetchProduct, saveProduct, fetchAllSavedProducts };

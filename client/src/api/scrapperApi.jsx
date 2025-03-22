@@ -1,75 +1,35 @@
 import axios from "axios";
 
-// Set up base URL for the API
-const API_BASE_URL = `${import.meta.env.VITE_SERVER_URL}/api/coupons`;
+const API_BASE_URL = "http://localhost:5000/api/products";
 
-// Create an Axios instance with default headers
-const apiClient = axios.create({
-  baseURL: API_BASE_URL,
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
-
-// Function to get auth token and attach it to requests
-const getAuthHeaders = () => {
-  const token = localStorage.getItem("token");
-  if (!token) throw new Error("No authentication token found");
-
-  return { Authorization: `Bearer ${token}` };
-};
-
-// Handle API errors
-const handleError = (error) => {
-  //   console.error("API Error:", error);
-  throw (
-    error?.response?.data?.message ||
-    error?.response?.data ||
-    "An error occurred"
-  );
-};
-
-// Add a new coupon
-export const claimSingleCoupon = async ({ couponId }) => {
-  //   console.log({ couponId });
+export const fetchProduct = async () => {
   try {
-    const response = await apiClient.post(
-      "/claim",
-      { couponId }, // Send coupon ID in the request body
-      {
-        headers: getAuthHeaders(),
-      }
-    );
-    // console.log("Response",response);
-
-    return response.data;
+    const response = await axios.get(API_BASE_URL);
+    return response.data[0];
   } catch (error) {
-    // console.log("Error", error.response.data);
-    handleError(error);
+    console.error("Error fetching product:", error);
+    throw error;
   }
 };
 
-// Get all coupons
-export const getCoupons = async () => {
-  //   console.log("fetching");
+export const saveProduct = async (product) => {
   try {
-    const response = await apiClient.get("/", {
-      headers: getAuthHeaders(),
-    });
-    return response.data;
+    await axios.post(`${API_BASE_URL}/save`, product);
+    return { success: true, message: "Product saved successfully!" };
   } catch (error) {
-    handleError(error);
+    console.error("Error saving product:", error);
+    throw error;
   }
 };
 
-// // Update a coupon
-// export const updateCoupon = async (couponId, couponData) => {
-//   try {
-//     const response = await apiClient.put(`/update/${couponId}`, couponData, {
-//       headers: getAuthHeaders(),
-//     });
-//     return response.data;
-//   } catch (error) {
-//     handleError(error);
-//   }
-// };
+export const fetchAllSavedProducts = async () => {
+  try {
+    const res = await axios.get(`${API_BASE_URL}/saved`);
+    // console.log(res.data);
+
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching saved products:", error);
+    throw error;
+  }
+};

@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Carousel } from "react-responsive-carousel";
@@ -37,7 +38,6 @@ export default function HomePage() {
       //   const res = await axios.post("http://localhost:5000/api/scrape", { url });
       const res = await axios.get("http://localhost:5000/api/products");
       console.log(res.data[0]);
-
       setProduct(res.data[0]);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -47,17 +47,16 @@ export default function HomePage() {
     }
   };
 
-   const saveProduct = async () => {
-     if (!product) return;
-     try {
-       await axios.post("http://localhost:5000/api/products/save", product);
-       alert("Product saved successfully!");
-     } catch (error) {
-       console.error("Error saving product:", error);
-       alert("Failed to save product. Please try again.");
-     }
-   };
-
+  const saveProduct = async () => {
+    if (!product) return;
+    try {
+      await axios.post("http://localhost:5000/api/saveProduct", product);
+      alert("Product saved successfully!");
+    } catch (error) {
+      console.error("Error saving product:", error);
+      alert("Failed to save product. Please try again.");
+    }
+  };
 
   return (
     <div className="relative w-full min-h-screen text-white overflow-hidden">
@@ -150,64 +149,6 @@ export default function HomePage() {
             <p className="text-gray-600 text-center">
               ⭐ {product.rating} ({product.numRatings} ratings)
             </p>
-            {/* Price & Discount */}
-            <div className="flex justify-center items-center gap-4 mt-3">
-              <p className="text-xl font-bold text-green-600">
-                ₹{product.price}
-              </p>
-              {product.discount && (
-                <span className="text-sm bg-red-500 text-white px-2 py-1 rounded-lg">
-                  {product.discount} OFF
-                </span>
-              )}
-            </div>
-            {/* Bank Offers */}
-            {product.bankOffers && (
-              <p className="text-gray-600 text-center mt-2 text-sm">
-                🎁 {product.bankOffers}
-              </p>
-            )}
-            {/* About This Item */}
-            <div className="mt-4 border-t border-gray-300 pt-3">
-              <h3 className="text-lg font-semibold text-gray-800">
-                About this Item:
-              </h3>
-              <p className="text-gray-700 text-sm">{product.about}</p>
-            </div>
-            {/* Product Information */}
-            <div className="mt-4 border-t border-gray-300 pt-3">
-              <h3 className="text-lg font-semibold text-gray-800">
-                Product Information:
-              </h3>
-              <p className="text-gray-700 text-sm">{product.productInfo}</p>
-            </div>
-            {/* Review Summary */}
-            <div className="mt-4 border-t border-gray-300 pt-3">
-              <h3 className="text-lg font-semibold text-gray-800">
-                Review Summary:
-              </h3>
-              <div className="text-gray-700 text-sm">
-                {/* {product.reviewSummary} */}
-                {product.reviewSummary && (
-                  <MarkdownWrapper review={product.reviewSummary} />
-                )}
-              </div>
-            </div>
-            {product.images?.length > 0 && (
-              <div className="mt-4">
-                <h3 className="text-lg font-semibold text-gray-800">Images:</h3>
-                <div className="grid grid-cols-3 gap-4 mt-3">
-                  {product.images?.map((img, index) => (
-                    <img
-                      key={index}
-                      src={img}
-                      alt="Product"
-                      className="w-full h-28 object-cover rounded-lg shadow-md border border-gray-200"
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
             {/* Save Product Button */}
             <div className="flex justify-center mt-4">
               <button
