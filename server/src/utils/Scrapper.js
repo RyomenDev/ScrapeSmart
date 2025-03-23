@@ -28,7 +28,9 @@ async function scrapeProduct(url) {
       "--no-sandbox",
       "--disable-setuid-sandbox",
       "--disable-blink-features=AutomationControlled",
+      "--disable-gpu",
       "--disable-infobars",
+      "--disable-dev-shm-usage",
     ],
   });
 
