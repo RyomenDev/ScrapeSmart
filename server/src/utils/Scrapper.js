@@ -20,8 +20,8 @@ async function scrapeProduct(url) {
   //   });
 
   const browser = await puppeteer.launch({
-    executablePath:
-      process.env.PUPPETEER_EXECUTABLE_PATH || puppeteer.executablePath(),
+    executablePath: puppeteer.executablePath(),
+    //   process.env.PUPPETEER_EXECUTABLE_PATH || "/usr/bin/chromium",
     headless: "new", // Run in headless mode for production
     slowMo: 50, // Mimic human behavior
     args: [
