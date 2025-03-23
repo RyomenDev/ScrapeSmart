@@ -1,9 +1,11 @@
 import axios from "axios";
-import conf from "../../conf.js"
+import conf from "../../conf.js";
 
 const API_BASE_URL = `${conf.SERVER_URL}/api/scrape`;
 
 export const fetchProduct = async (url) => {
+  // console.log("requestBody", url);
+
   try {
     // const response = await axios.get(API_BASE_URL);
     // return response.data[0];

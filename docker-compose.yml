@@ -1,0 +1,55 @@
+
+
+services:
+  mongo:
+    image: mongo:6.0
+    container_name: mongodb_container
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: ScrapeSmart
+
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: server
+      args:
+        - MONGO_URI=${MONGO_URI}
+        - PORT=${PORT}
+        - GEMINI_API_KEY=${GEMINI_API_KEY}
+        - OPENAI_API_KEY=${OPENAI_API_KEY}
+        - SERVER_URL=${SERVER_URL}
+        - FRONTEND_URL=${FRONTEND_URL}
+    container_name: server_container
+    restart: always
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    env_file:
+      - server/.env # Load env variables from server/.env
+
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: client
+      args:
+        - VITE_SERVER_URL=${SERVER_URL} # Pass server URL to React
+        - VITE_FRONTEND_URL=${FRONTEND_URL} # Pass frontend URL
+    container_name: client_container
+    restart: always
+    ports:
+      - "5173:5173"
+    depends_on:
+      - server
+    env_file:
+      - client/.env # Load env variables from client/.env
+    command: ["npm", "run", "dev", "--", "--host"] # Start Vite in dev mode
+
+volumes:
+  mongo_data:

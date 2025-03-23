@@ -8,7 +8,20 @@ async function scrapeProduct(url) {
   //   console.log({ url });
 
   // Launch Puppeteer with necessary configurations
+  //   const browser = await puppeteer.launch({
+  //     headless: "new", // Run in headless mode for production
+  //     slowMo: 50, // Mimic human behavior
+  //     args: [
+  //       "--no-sandbox",
+  //       "--disable-setuid-sandbox",
+  //       "--disable-blink-features=AutomationControlled",
+  //       "--disable-infobars",
+  //     ],
+  //   });
+
   const browser = await puppeteer.launch({
+    executablePath:
+      process.env.PUPPETEER_EXECUTABLE_PATH || "/usr/bin/chromium",
     headless: "new", // Run in headless mode for production
     slowMo: 50, // Mimic human behavior
     args: [
