@@ -53,7 +53,13 @@ async function scrapeProduct(url) {
       };
 
       const getImages = (selector) =>
-        [...document.querySelectorAll(selector)].map((img) => img.src);
+        [...document.querySelectorAll(selector)].map(
+          (img) =>
+            img?.currentSrc ||
+            img?.dataset.oldHires ||
+            img?.getAttribute("_osrc") ||
+            img?.src
+        );
 
       const getReviews = () => {
         return [...document.querySelectorAll(".review-text")].map((review) =>
@@ -71,8 +77,10 @@ async function scrapeProduct(url) {
         about: getText("#feature-bullets") || "No Description",
         productInfo: getText("#productDetails_techSpec_section_1") || "No Info",
         images: getImages("#imgTagWrapperId img"),
-        manufacturerImages: getImages("#aplus img"),
+        // manufacturerImages: getImages("#aplus img"),
         reviews: getReviews(),
+        // landingImage: getImages("#landingImage"),
+        // wrapperImages: getImages(".imgTagWrapper img"),
       };
     });
 

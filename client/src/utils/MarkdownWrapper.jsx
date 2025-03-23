@@ -5,3 +5,5 @@ export const MarkdownWrapper = ({ review }) => {
 
   return <ReactMarkdown>{review}</ReactMarkdown>;
 };
+
+export default MarkdownWrapper;

@@ -18,6 +18,7 @@ export const scrapeProduct = async (req, res) => {
 
     // Generate Review Summary using OpenAI utility
     // const reviewSummary = await generateReviewSummary(data.reviews);
+    // console.log(data.reviews);
 
     const reviewSummary = await generateReviewSummaryGemini(data.reviews);
 
@@ -33,7 +34,7 @@ export const scrapeProduct = async (req, res) => {
       about: data?.about,
       productInfo: data?.productInfo,
       images: data?.images,
-      manufacturerImages: data?.manufacturerImages,
+      //   manufacturerImages: data?.manufacturerImages,
       reviewSummary: reviewSummary,
     });
     // console.log({ newProduct });

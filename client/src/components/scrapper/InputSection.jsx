@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function InputSection({ url, setUrl, scrapeData, loading }) {
   return (
     <div className="mt-6 flex flex-col gap-3 w-full max-w-md">
@@ -14,7 +16,15 @@ export default function InputSection({ url, setUrl, scrapeData, loading }) {
         disabled={loading}
       >
         {loading ? "Fetching Data..." : "Get Product Information"}
-      </button>
+      </button> 
     </div>
   );
 }
+
+// PropTypes validation
+InputSection.propTypes = {
+  url: PropTypes.string.isRequired,
+  setUrl: PropTypes.func.isRequired,
+  scrapeData: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+};

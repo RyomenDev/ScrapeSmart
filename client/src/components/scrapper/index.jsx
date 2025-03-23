@@ -9,6 +9,7 @@ import {
   fetchAllSavedProducts,
 } from "../../api/index.jsx";
 import SavedProducts from "./SavedProducts.jsx";
+import { ImageFilter } from "../../utils";
 
 const questions = [
   "Effortlessly extract Smart TV details from Amazon India!",
@@ -34,7 +35,9 @@ export default function ScrapperHomePage() {
     if (!url.trim()) return alert("Please enter a valid Amazon Smart TV URL.");
     try {
       setLoading(true);
-      const data = await fetchProduct();
+      const data = await fetchProduct(url);
+      //   console.log(data.manufacturerImages);
+
       setProduct(data);
     } catch {
       alert("Failed to fetch product details. Please try again.");

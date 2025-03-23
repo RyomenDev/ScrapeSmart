@@ -2,9 +2,13 @@ import axios from "axios";
 
 const API_BASE_URL = "http://localhost:5000/api/products";
 
-export const fetchProduct = async () => {
+export const fetchProduct = async (url) => {
   try {
     const response = await axios.get(API_BASE_URL);
+    // const response = await axios.post("http://localhost:5000/api/scrape", {
+    //   //   url: "https://www.amazon.in/rts-Universal-Adapter-International-Worldwide/dp/B082WYMTWF?th=1",
+    //   url: url,
+    // });
     return response.data[0];
   } catch (error) {
     console.error("Error fetching product:", error);
