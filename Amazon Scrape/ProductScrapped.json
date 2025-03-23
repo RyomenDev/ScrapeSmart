@@ -1,0 +1,20 @@
+{
+    "statusCode": 200,
+    "data": {
+        "name": "rts Universal Travel Adapter",
+        "rating": "4.2 out of 5 stars",
+        "numRatings": "13,028 ratings",
+        "price": "588\n.",
+        "discount": "-88%",
+        "bankOffers": "N/A",
+        "about": "About this item, saving a lot of space for your luggage.",
+        "productInfo": "Manufacturer\t‎rts\nCountry of Origin\t‎China\nItem model number\t‎UTA01\nProduct Dimensions\t‎8.4 x 5.7 x 4.8 cm; 90 g\nASIN\t‎B082WYMTWF",
+        "images": [
+            "https://m.media-amazon.com/images/I/611RCy1XjsL._SY606_.jpg"
+        ],
+        "reviewSummary": "These universal adapter reviews highlight its **travel-friendly design",
+        "_id": "67e026f274fd3eca4793ac78"
+    },
+    "message": "Product fetched successfully",
+    "success": true
+}

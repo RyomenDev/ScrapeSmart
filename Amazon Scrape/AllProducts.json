@@ -1,0 +1,39 @@
+{
+    "statusCode": 200,
+    "data": [
+        {
+            "_id": "67decbad448ae31c8d6af48b",
+            "name": "rts Universal Travel Adapter, International All in One Worldwide Travel Adapter and Wall Charger with USB Ports with Multi Type Power Outlet USB 2.1A,100-250 Voltage Travel Charger (Black)",
+            "rating": "4.2 out of 5 stars",
+            "numRatings": "13,019 ratings",
+            "price": "588\n.",
+            "discount": "-88%",
+            "bankOffers": "N/A",
+            "about": "About this .. luggage.",
+            "productInfo": "...",
+            "images": [
+                "https://m.media-amazon.com/images/I/41uGjvXbeBL._SX300_SY300_QL70_FMwebp_.jpg"
+            ],
+            "reviewSummary": " ...",
+            "__v": 0
+        },
+        {
+            "_id": "67decbad448ae31c8d6af48b",
+            "name": "rts Universal Travel Adapter, International All in One Worldwide Travel Adapter and Wall Charger with USB Ports with Multi Type Power Outlet USB 2.1A,100-250 Voltage Travel Charger (Black)",
+            "rating": "4.2 out of 5 stars",
+            "numRatings": "13,019 ratings",
+            "price": "588\n.",
+            "discount": "-88%",
+            "bankOffers": "N/A",
+            "about": "About this .. luggage.",
+            "productInfo": "...",
+            "images": [
+                "https://m.media-amazon.com/images/I/41uGjvXbeBL._SX300_SY300_QL70_FMwebp_.jpg"
+            ],
+            "reviewSummary": " ...",
+            "__v": 0
+        },
+    ],
+    "message": "Product fetched successfully",
+    "success": true
+}

@@ -4,6 +4,7 @@ ScrapeSmart is a **MERN-based Amazon Smart TV scraper** that extracts product de
 
 ![Image](https://github.com/user-attachments/assets/ec57c0d7-e553-4877-bc57-bb252e13c638)
 ![Image](https://github.com/user-attachments/assets/a9c6d359-88e2-435e-b7e6-aa5317a3a2b1)
+![Image](https://github.com/user-attachments/assets/bfbfff03-4354-4011-876a-3d3f51077b12)
 
 ### 1. Backend (Node.js + Express.js)
 
@@ -23,10 +24,11 @@ Store scraped product data for future reference.
 
 Tech Stack:
 
-- **Backend:** Node.js, Express.js, Puppeteer/Cheerio
+- **Backend:** Node.js, Express.js, Puppeteer
 - **Frontend:** React.js, Tailwind CSS
 - **Database:** MongoDB (to store scraped data)
 - **AI Summary:** Gemini API for review summarization
+- **Api \& Documentation:** Swagger (OPENAPI)
 
 ## 🚀 Features
 
@@ -69,3 +71,9 @@ Tech Stack:
 
 - After scraping and processing the reviews, the product details (including the generated summary) are stored in the database using MongoDB.
 - A new product instance is created and saved asynchronously.
+
+### References
+
+- [GeeksForGeeks](https://www.geeksforgeeks.org/scraping-amazon-product-information-using-beautiful-soup/)
+- [OpenAI's website](https://platform.openai.com/)
+- [Google AI for Developers](https://ai.google.dev/) 

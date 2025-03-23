@@ -32,8 +32,8 @@ app.use(
   cors({
     origin: (origin, callback) => {
       const allowedOrigins = [
-        conf.FRONTEND_URL,
-        // conf.CORS_ORIGIN1.replace(/\/$/, ""),
+        conf.FRONTEND_URL.replace(/\/$/, ""),
+        conf.SERVER_URL.replace(/\/$/, ""),
       ];
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
@@ -59,7 +59,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// Middleware for parsing JSON, cookies, and serving static files
 app.set("trust proxy", "loopback"); // Trust only localhost
 
 // ✅ Serve static files

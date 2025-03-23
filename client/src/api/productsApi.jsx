@@ -15,7 +15,7 @@ export const saveProduct = async (product) => {
 
 export const fetchAllSavedProducts = async () => {
   try {
-    const res = await axios.get(`${API_BASE_URL}/saved`);
+    const res = await axios.get(`${API_BASE_URL}`);
     // console.log(res.data);
 
     return res.data;
