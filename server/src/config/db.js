@@ -3,6 +3,8 @@ import conf from "../../conf.js";
 
 const connectDB = async () => {
   try {
+    // console.log(conf.MONGO_URI);
+    
     const connectionInstance = await mongoose.connect(conf.MONGO_URI);
     console.log(
       `✅ MongoDB connected! DB Host: ${connectionInstance.connection.host}`
