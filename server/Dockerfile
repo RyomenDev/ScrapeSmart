@@ -2,7 +2,10 @@
 FROM node:18-alpine
 
 # Install necessary dependencies for Chromium
+# RUN apk update && apk add --no-cache \
 RUN apk update && apk add --no-cache \
+  --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community \
+  --repository=http://dl-cdn.alpinelinux.org/alpine/edge/main \
   chromium \
   nss \
   freetype \
