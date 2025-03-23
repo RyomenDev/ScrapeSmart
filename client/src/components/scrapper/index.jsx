@@ -36,7 +36,7 @@ export default function ScrapperHomePage() {
     try {
       setLoading(true);
       const response = await fetchProduct(url);
-      console.log(response);
+      //   console.log(response);
 
       setProduct(response.data);
     } catch {
@@ -54,10 +54,7 @@ export default function ScrapperHomePage() {
       alert(response.message);
     } catch (error) {
       //   console.log(error.response.data.message);
-      alert(
-        error?.message ||
-          "Failed to save product. Please try again."
-      );
+      alert(error?.message || "Failed to save product. Please try again.");
     }
   };
 

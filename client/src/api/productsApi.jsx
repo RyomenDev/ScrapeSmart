@@ -1,11 +1,12 @@
 import axios from "axios";
+import conf from "../../conf.js";
 
-const API_BASE_URL = "http://localhost:5000/api/products";
+const API_BASE_URL = `${conf.SERVER_URL}/api/products`;
 
 export const saveProduct = async (product) => {
   try {
     const response = await axios.post(`${API_BASE_URL}/save`, product);
-    console.log(response.data);
+    // console.log(response.data);
     return response.data;
   } catch (error) {
     // console.error("Error saving product:", error?.response?.data);

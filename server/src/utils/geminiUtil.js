@@ -1,6 +1,9 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import conf from "../../conf.js";
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const genAI = new GoogleGenerativeAI(conf.GEMINI_API_KEY);
+
+
 
 export const generateReviewSummaryGemini = async (reviews) => {
   //   console.log({ reviews });
