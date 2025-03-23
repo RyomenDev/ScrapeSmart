@@ -35,10 +35,10 @@ export default function ScrapperHomePage() {
     if (!url.trim()) return alert("Please enter a valid Amazon Smart TV URL.");
     try {
       setLoading(true);
-      const data = await fetchProduct(url);
-      //   console.log(data.manufacturerImages);
+      const response = await fetchProduct(url);
+      console.log(response);
 
-      setProduct(data);
+      setProduct(response.data);
     } catch {
       alert("Failed to fetch product details. Please try again.");
     } finally {
@@ -50,16 +50,21 @@ export default function ScrapperHomePage() {
     if (!product) return;
     try {
       const response = await saveProduct(product);
+      //   console.log(response);
       alert(response.message);
-    } catch {
-      alert("Failed to save product. Please try again.");
+    } catch (error) {
+      //   console.log(error.response.data.message);
+      alert(
+        error?.message ||
+          "Failed to save product. Please try again."
+      );
     }
   };
 
   const getAllSavedProducts = async () => {
     try {
       const products = await fetchAllSavedProducts();
-      setSavedProducts(products);
+      setSavedProducts(products.data);
     } catch {
       alert("Failed to fetch saved products. Please try again.");
     }

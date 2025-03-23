@@ -3,7 +3,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 export const generateReviewSummaryGemini = async (reviews) => {
-  // console.log({ reviews });
+  //   console.log({ reviews });
 
   try {
     if (!reviews || reviews.length === 0) return "No reviews available";

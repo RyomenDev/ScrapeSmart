@@ -2,50 +2,53 @@ import { Product } from "../models/product.model.js";
 import scraper from "../utils/Scrapper.js";
 // import { generateReviewSummaryOpenAi } from "../utils/openaiUtil.js";
 import { generateReviewSummaryGemini } from "../utils/geminiUtil.js";
+import { ApiError } from "../utils/ApiError.js";
+import { ApiResponse } from "../utils/ApiResponse.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
 
-export const scrapeProduct = async (req, res) => {
-  try {
-    const { url } = req.body;
-    // console.log({ url });
+export const scrapeProduct = asyncHandler(async (req, res) => {
+  const { url } = req.body;
+  // console.log({ url });
 
-    const data = await scraper(url);
+  const data = await scraper(url);
 
-    // console.log("Scraped data:", data);
+  // console.log("Scraped data:", data);
 
-    if (!data || data.error) {
-      return res.status(404).json({ error: "No data scraped" });
-    }
-
-    // Generate Review Summary using OpenAI utility
-    // const reviewSummary = await generateReviewSummary(data.reviews);
-    // console.log(data.reviews);
-
-    const reviewSummary = await generateReviewSummaryGemini(data.reviews);
-
-    // const product = await new Product(data);
-    const product = await new Product({ ...data, reviewSummary });
-    const newProduct = await new Product({
-      name: data?.name,
-      rating: data?.rating,
-      numRatings: data?.numRatings,
-      price: data?.price,
-      discount: data?.discount,
-      bankOffers: data?.bankOffers,
-      about: data?.about,
-      productInfo: data?.productInfo,
-      images: data?.images,
-      //   manufacturerImages: data?.manufacturerImages,
-      reviewSummary: reviewSummary,
-    });
-    // console.log({ newProduct });
-
-    // await product.save();
-    res.json(product);
-  } catch (error) {
-    console.error("❌ Scraping Error:", error);
-    res.status(500).json({ error: "Scraping failed" });
+  if (!data || data.error) {
+    return res.status(404).json({ error: "No data scraped" });
+    // throw new ApiError(404, "Not able to get data from Amazon");
+    // throw ApiError(404, "Not able to get data from Amazon");
   }
-};
+
+  // Generate Review Summary using OpenAI utility
+  // const reviewSummary = await generateReviewSummary(data.reviews);
+  // console.log(data.reviews);
+
+  const reviewSummary = await generateReviewSummaryGemini(data.reviews);
+
+  // const product = await new Product(data);
+  const product = await new Product({ ...data, reviewSummary });
+  const newProduct = await new Product({
+    name: data?.name,
+    rating: data?.rating,
+    numRatings: data?.numRatings,
+    price: data?.price,
+    discount: data?.discount,
+    bankOffers: data?.bankOffers,
+    about: data?.about,
+    productInfo: data?.productInfo,
+    images: data?.images,
+    //   manufacturerImages: data?.manufacturerImages,
+    reviewSummary: reviewSummary,
+  });
+  // console.log({ newProduct });
+
+  // await product.save();
+  //   res.json(product);
+  return res
+    .status(201)
+    .json(new ApiResponse(200, product, "Product fetched successfully"));
+});
 
 //  const reviews = [
 //    "Good connectivity and good product, good for Travel use.",

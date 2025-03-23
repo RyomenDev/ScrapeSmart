@@ -17,7 +17,10 @@ export default function SavedProducts({ savedProducts, setSavedProducts }) {
 
   return (
     <div className="fixed inset-0 flex justify-center items-center bg-black/40 backdrop-blur-lg p-6">
-      <div className="relative w-11/12 max-w-5xl bg-white/10 backdrop-blur-2xl border border-white/30 rounded-2xl shadow-xl p-6 text-white">
+      <div
+        className="relative w-11/12 max-w-5xl bg-white/10 backdrop-blur-2xl border border-white/30 rounded-2xl shadow-xl p-6 text-white 
+                  max-h-[90vh] overflow-y-auto"
+      >
         <button
           onClick={() => setSavedProducts([])}
           className="absolute top-4 right-4 bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-full transition-transform transform hover:scale-110 z-50"
@@ -64,8 +67,11 @@ export default function SavedProducts({ savedProducts, setSavedProducts }) {
                   </div>
                 )}
                 <h3 className="font-semibold text-lg text-white text-center">
-                  {item.name}
+                  {item.name.length > 20
+                    ? item.name.slice(0, 45) + "..."
+                    : item.name}
                 </h3>
+
                 <p className="text-white/90 text-center">
                   Price: ₹{item.price}
                 </p>
