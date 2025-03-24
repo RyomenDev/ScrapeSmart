@@ -1,6 +1,7 @@
 import puppeteer from "puppeteer-extra";
 import StealthPlugin from "puppeteer-extra-plugin-stealth";
 
+
 // Use Puppeteer's stealth plugin to bypass bot detection
 puppeteer.use(StealthPlugin());
 
@@ -11,8 +12,7 @@ async function scrapeProduct(url) {
   const browser = await puppeteer.launch({
     headless: "new", // Ensure Puppeteer runs in headless mode
     executablePath:
-      process.env.PUPPETEER_EXECUTABLE_PATH ||
-      require("puppeteer").executablePath(), // Use system Chromium
+      process.env.PUPPETEER_EXECUTABLE_PATH || puppeteer.executablePath(), // Use system Chromium
     args: [
       "--no-sandbox",
       "--disable-setuid-sandbox",
