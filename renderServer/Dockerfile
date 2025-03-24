@@ -1,47 +1,29 @@
-# Use an official Node.js image with Debian (required for Puppeteer)
-FROM node:18-bullseye
+# Use a base image with Puppeteer dependencies
+FROM mcr.microsoft.com/playwright:v1.40.0-jammy
 
-# Set working directory
 WORKDIR /app
 
-# Install dependencies
+# Copy package files
 COPY package.json package-lock.json ./
-RUN npm install
 
-# Install required dependencies for Puppeteer
+# Install dependencies (skip unnecessary Chromium download)
 RUN apt-get update && apt-get install -y \
-    wget \
-    curl \
-    unzip \
-    fontconfig \
-    locales \
-    gconf-service \
-    libasound2 \
-    libatk1.0-0 \
-    libcups2 \
-    libdrm2 \
-    libxkbcommon-x11-0 \
-    libgtk-3-0 \
-    libgbm-dev \
-    libnss3 \
-    libxss1 \
-    libxtst6 \
-    ca-certificates \
-    fonts-liberation \
-    libappindicator1 \
-    libappindicator3-1 \
-    libcurl4 \
-    libdbus-1-3 \
-    libnspr4 \
-    lsb-release \
-    xdg-utils \
-    --no-install-recommends
+    wget curl unzip fontconfig locales \
+    gconf-service libasound2 libatk1.0-0 \
+    libcups2 libdrm2 libxkbcommon-x11-0 \
+    libgtk-3-0 libgbm-dev libnss3 \
+    libxss1 libxtst6 ca-certificates \
+    fonts-liberation libappindicator1 \
+    libappindicator3-1 libcurl4 libdbus-1-3 \
+    libnspr4 lsb-release xdg-utils \
+    --no-install-recommends && \
+    rm -rf /var/lib/apt/lists/*
 
-# Copy app files
+# Install dependencies without Puppeteer's bundled Chromium
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+RUN npm install --omit=dev
+
+# Copy all files and set up the app
 COPY . .
 
-# Expose port (if using an API)
-EXPOSE 3000
-
-# Start the app
-CMD ["npm", "start"]
+CMD ["node", "index.js"]
