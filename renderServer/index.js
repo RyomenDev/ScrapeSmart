@@ -34,7 +34,6 @@ const swaggerOptions = {
 const swaggerDocs = swaggerJSDoc(swaggerOptions); // Match the casing here
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-
 // Start the server
 const startServer = async () => {
   try {
@@ -44,6 +43,7 @@ const startServer = async () => {
     // });
     app.listen(PORT, () => {
       console.log(`⚙️ Server is running at port: ${PORT}`);
+      console.log(`⚙️ Allowed Client : ${conf.FRONTEND_URL}`);
     });
   } catch (error) {
     console.error("❌ Failed to start server:", error.message);
