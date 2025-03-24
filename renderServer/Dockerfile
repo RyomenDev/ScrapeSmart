@@ -1,4 +1,4 @@
-# Use a base image with Puppeteer dependencies
+# Use Playwright image with Puppeteer dependencies
 FROM mcr.microsoft.com/playwright:v1.40.0-jammy
 
 WORKDIR /app
@@ -6,7 +6,7 @@ WORKDIR /app
 # Copy package files
 COPY package.json package-lock.json ./
 
-# Install dependencies (skip unnecessary Chromium download)
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     wget curl unzip fontconfig locales \
     gconf-service libasound2 libatk1.0-0 \
@@ -19,11 +19,17 @@ RUN apt-get update && apt-get install -y \
     --no-install-recommends && \
     rm -rf /var/lib/apt/lists/*
 
-# Install dependencies without Puppeteer's bundled Chromium
+# Set environment variable to skip Chromium download
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+
+# Install dependencies (without dev dependencies)
 RUN npm install --omit=dev
 
-# Copy all files and set up the app
+# Copy all files
 COPY . .
 
-CMD ["node", "index.js"]
+# Expose the correct port for Render (PORT from .env)
+EXPOSE ${PORT}
+
+# Start the app using environment variables
+CMD ["sh", "-c", "node index.js"]
