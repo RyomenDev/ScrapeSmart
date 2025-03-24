@@ -9,7 +9,6 @@ ScrapeSmart is a **MERN-based Amazon Smart TV scraper** that extracts product de
     <img src="https://github.com/user-attachments/assets/a9c6d359-88e2-435e-b7e6-aa5317a3a2b1" style="width: 45%; height: auto;">
 </p>
 
-
 ![Image](https://github.com/user-attachments/assets/bfbfff03-4354-4011-876a-3d3f51077b12)
 
 ### 1. Backend (Node.js + Express.js)
@@ -116,6 +115,14 @@ docker-compose up --build
 docker-compose down
 ```
 
+### TryOut Links
+
+- [Samsung Smartphone](https://www.amazon.in/Samsung-Smartphone-Titanium-Storage-Included/dp/B0DSKMKJV5?th=1) - https://www.amazon.in/Samsung-Smartphone-Titanium-Storage-Included/dp/B0DSKMKJV5?th=1
+- [MSI NVIDIA GeForce Ventus Graphic Card](https://www.amazon.in/MSI-NVIDIA-GeForce-Ventus-Graphic/dp/B0B5V8NT52) - https://www.amazon.in/MSI-NVIDIA-GeForce-Ventus-Graphic/dp/B0B5V8NT52
+- [ASUS Laptop (i7-13650HX)](https://www.amazon.in/ASUS-Battery-i7-13650HX-Windows-G614JU-N3200WS/dp/B0C4TVHMR9) -https://www.amazon.in/ASUS-Battery-i7-13650HX-Windows-G614JU-N3200WS/dp/B0C4TVHMR9
+- [MSI G274QPX 27-inch Gaming Monitor](https://www.amazon.in/MSI-G274QPX-Inch-Gaming-Monitor/dp/B0BSLJ9ZR7) - https://www.amazon.in/MSI-G274QPX-Inch-Gaming-Monitor/dp/B0BSLJ9ZR7
+- [Sony PlayStation 5 Slim](https://www.amazon.in/Sony-CFI-2008A01X-PlayStation%C2%AE5-Console-slim/dp/B0CY5HVDS2) - https://www.amazon.in/Sony-CFI-2008A01X-PlayStation%C2%AE5-Console-slim/dp/B0CY5HVDS2
+
 ---
 
 ### References
@@ -123,5 +130,3 @@ docker-compose down
 - [GeeksForGeeks](https://www.geeksforgeeks.org/scraping-amazon-product-information-using-beautiful-soup/)
 - [OpenAI's website](https://platform.openai.com/)
 - [Google AI for Developers](https://ai.google.dev/)
-
-https://www.amazon.in/Samsung-Smartphone-Titanium-Storage-Included/dp/B0DSKMKJV5?th=1
