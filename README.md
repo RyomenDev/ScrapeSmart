@@ -112,7 +112,7 @@ docker-compose up --build
 ```
 
 ```sh
-docker-compose down
+docker-compose down # – Stops and removes all containers, networks, and volumes defined in the docker-compose.yml file.
 ```
 
 ### TryOut Links
