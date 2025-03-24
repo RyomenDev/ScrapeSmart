@@ -2,8 +2,14 @@
 
 ScrapeSmart is a **MERN-based Amazon Smart TV scraper** that extracts product details, pricing, offers, and AI-generated review summaries. Built with **Node.js, Puppeteer, Express, React.js, and MongoDB**, it provides an interactive UI for seamless product data retrieval and storage.
 
-![Image](https://github.com/user-attachments/assets/ec57c0d7-e553-4877-bc57-bb252e13c638)
-![Image](https://github.com/user-attachments/assets/a9c6d359-88e2-435e-b7e6-aa5317a3a2b1)
+![Description](./Scrape/Wroking.gif)
+
+<p align="center" style="display: flex; justify-content: center;">
+    <img src="https://github.com/user-attachments/assets/e2168b85-915b-41b1-9411-e1485d46fafd" style="width: 45%; height: auto; margin-right: 10px;">
+    <img src="https://github.com/user-attachments/assets/a9c6d359-88e2-435e-b7e6-aa5317a3a2b1" style="width: 45%; height: auto;">
+</p>
+
+
 ![Image](https://github.com/user-attachments/assets/bfbfff03-4354-4011-876a-3d3f51077b12)
 
 ### 1. Backend (Node.js + Express.js)
@@ -72,8 +78,50 @@ Tech Stack:
 - After scraping and processing the reviews, the product details (including the generated summary) are stored in the database using MongoDB.
 - A new product instance is created and saved asynchronously.
 
+---
+
+## HOW TO RUN
+
+### 1️⃣ Create .env File
+
+Define your environment variables:
+
+### :clubs: A. Client
+
+```ini
+VITE_SERVER_URL="http://localhost:5000"
+```
+
+### :clubs: B. Server
+
+```sh
+VITE_SERVER_URL=http://localhost:5000
+MONGO_URI=mongodb://mongodb_container:27017/scrapesmart # if using Container image
+# MONGO_URI=mongodb+srv://yourUsername:yourEncodedPassword@cluster0.mongodb.net/yourDatabase # if using cloud Db
+# # MONGO_URI="mongodb://localhost:27017/" # If use locally setup DB
+PORT=5000
+SERVER_URL="http://localhost:5000"
+OPENAI_API_KEY="sk-proj-" # get from [Google AI for Developers](https://ai.google.dev/)
+GEMINI_API_KEY="AIz.."
+
+```
+
+### 2️⃣ Run Everything
+
+```sh
+docker-compose up --build
+```
+
+```sh
+docker-compose down
+```
+
+---
+
 ### References
 
 - [GeeksForGeeks](https://www.geeksforgeeks.org/scraping-amazon-product-information-using-beautiful-soup/)
 - [OpenAI's website](https://platform.openai.com/)
-- [Google AI for Developers](https://ai.google.dev/) 
+- [Google AI for Developers](https://ai.google.dev/)
+
+https://www.amazon.in/Samsung-Smartphone-Titanium-Storage-Included/dp/B0DSKMKJV5?th=1
