@@ -5,19 +5,7 @@ import StealthPlugin from "puppeteer-extra-plugin-stealth";
 puppeteer.use(StealthPlugin());
 
 async function scrapeProduct(url) {
-  //   console.log({ url });
-
-  // Launch Puppeteer with necessary configurations
-  //   const browser = await puppeteer.launch({
-  //     headless: "new", // Run in headless mode for production
-  //     slowMo: 50, // Mimic human behavior
-  //     args: [
-  //       "--no-sandbox",
-  //       "--disable-setuid-sandbox",
-  //       "--disable-blink-features=AutomationControlled",
-  //       "--disable-infobars",
-  //     ],
-  //   });
+  console.log({ url });
 
   const browser = await puppeteer.launch({
     executablePath:
@@ -123,3 +111,15 @@ export default scrapeProduct;
 // scrapeProduct(
 //   "https://www.amazon.in/Daikin-Inverter-Display-Technology-MTKL50U/dp/B0BK1KS6ZD"
 // ).then(console.log);
+
+// Launch Puppeteer with necessary configurations
+//   const browser = await puppeteer.launch({
+//     headless: "new", // Run in headless mode for production
+//     slowMo: 50, // Mimic human behavior
+//     args: [
+//       "--no-sandbox",
+//       "--disable-setuid-sandbox",
+//       "--disable-blink-features=AutomationControlled",
+//       "--disable-infobars",
+//     ],
+//   });

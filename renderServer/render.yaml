@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: puppeteer-scraper
+    env: node
+    region: oregon
+    buildCommand: npm install
+    startCommand: npm start
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: PUPPETEER_EXECUTABLE_PATH
+        value: "/usr/bin/google-chrome-stable"
