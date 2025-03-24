@@ -12,6 +12,9 @@ import { app } from "./src/app.js";
 import conf from "./conf.js";
 const PORT = conf.PORT || 5000;
 
+console.log(`⚙️ Allowed Client : ${conf.FRONTEND_URL}`);
+
+
 // Swagger configuration
 const swaggerOptions = {
   swaggerDefinition: {
